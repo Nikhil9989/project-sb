@@ -3,28 +3,46 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import Image from 'next/image';
 
 const Hero = () => {
   return (
-    <section className="relative overflow-hidden pt-20 pb-16 md:pt-32 md:pb-24">
-      {/* Background Animation */}
-      <div className="absolute inset-0 animated-gradient-bg opacity-10 z-0"></div>
+    <section className="relative overflow-hidden pt-24 pb-20 md:pt-32 md:pb-28 bg-obsidian-900">
+      {/* Gold pattern background */}
+      <div className="absolute inset-0 bg-[url('/images/pattern.svg')] bg-repeat opacity-5 z-0"></div>
       
-      {/* Particle Animation (simulated with fixed divs) */}
-      <div className="absolute inset-0 z-0">
-        {[...Array(20)].map((_, i) => (
-          <div
+      {/* Animated gradient overlay */}
+      <div className="absolute inset-0 animated-gold-gradient opacity-10 z-0"></div>
+      
+      {/* Decorative elements */}
+      <div className="absolute top-1/4 left-10 w-24 h-24 rounded-full bg-gold-500/5 blur-xl"></div>
+      <div className="absolute bottom-1/4 right-10 w-32 h-32 rounded-full bg-gold-500/10 blur-xl"></div>
+      <div className="absolute top-1/3 right-1/4 w-16 h-16 rounded-full bg-gold-500/5 blur-xl"></div>
+      
+      {/* Gold particles */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        {[...Array(15)].map((_, i) => (
+          <motion.div
             key={i}
-            className="absolute rounded-full bg-primary-500 opacity-20 animate-pulse-slow"
-            style={{
-              width: Math.random() * 10 + 5 + 'px',
-              height: Math.random() * 10 + 5 + 'px',
-              top: Math.random() * 100 + '%',
-              left: Math.random() * 100 + '%',
-              animationDelay: Math.random() * 3 + 's',
+            initial={{ 
+              x: Math.random() * 100 + '%', 
+              y: Math.random() * 100 + '%', 
+              scale: Math.random() * 0.5 + 0.5 
             }}
-          ></div>
+            animate={{ 
+              y: [Math.random() * 100 + '%', Math.random() * 100 + '%'],
+              opacity: [0.3, 0.7, 0.3],
+            }}
+            transition={{ 
+              repeat: Infinity,
+              duration: Math.random() * 10 + 10,
+              ease: "easeInOut",
+            }}
+            className="absolute w-2 h-2 rounded-full bg-gold-500"
+            style={{ 
+              filter: 'blur(1px)',
+              boxShadow: '0 0 8px 2px rgba(255, 192, 0, 0.3)' 
+            }}
+          ></motion.div>
         ))}
       </div>
 
@@ -34,35 +52,37 @@ const Hero = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
             className="text-center lg:text-left"
           >
-            <motion.span
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="px-4 py-2 bg-primary-50 text-primary-700 rounded-full inline-block mb-4 font-medium text-sm"
+              className="mb-6"
             >
-              Revolutionizing Education in India
-            </motion.span>
+              <span className="inline-block px-4 py-1.5 bg-obsidian-800 border border-gold-500/30 text-gold-500 rounded-full text-sm font-medium tracking-wide">
+                Cohort 7 Enrolling Now
+              </span>
+            </motion.div>
             
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="mb-6 font-bold text-4xl sm:text-5xl md:text-6xl gradient-text"
+              className="font-display mb-6 text-3xl sm:text-4xl md:text-5xl font-bold leading-tight"
             >
-              Bridge the Gap Between <br className="hidden md:block" />
-              <span className="text-primary-600">Education & Industry</span>
+              Transform Your <span className="gold-gradient-text">Potential</span> Through <br className="hidden md:block" />
+              <span className="gold-gradient-text">Domain Mastery</span>
             </motion.h1>
             
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-lg md:text-xl text-dark-600 mb-8 max-w-xl mx-auto lg:mx-0"
+              className="text-base md:text-lg text-obsidian-200 mb-8 max-w-xl mx-auto lg:mx-0"
             >
-              SKILL BRIDGE offers domain-based learning journeys that transform theoretical knowledge into practical, industry-ready expertise through personalized mentorship and project-based learning.
+              SKILL BRIDGE offers cohort-based learning journeys that transform theoretical knowledge into practical, industry-ready expertise through our revolutionary 5-phase progression system.
             </motion.p>
             
             <motion.div
@@ -72,16 +92,16 @@ const Hero = () => {
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
               <Link 
-                href="/learning-paths"
-                className="btn btn-primary px-8 py-3 text-base sm:text-lg"
+                href="/enroll"
+                className="btn btn-gold px-8 py-3 text-sm"
               >
-                Explore Learning Paths
+                Join Next Cohort
               </Link>
               <Link 
-                href="/about"
-                className="btn btn-outline px-8 py-3 text-base sm:text-lg"
+                href="/approach"
+                className="btn btn-outline-gold px-8 py-3 text-sm"
               >
-                Learn More
+                Explore Our Approach
               </Link>
             </motion.div>
             
@@ -89,39 +109,89 @@ const Hero = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7, duration: 0.8 }}
-              className="mt-8 flex items-center justify-center lg:justify-start text-sm text-dark-500"
+              className="mt-10 flex items-center justify-center lg:justify-start text-xs md:text-sm text-obsidian-300"
             >
-              <div className="flex -space-x-2 mr-2">
+              <div className="flex -space-x-2 mr-3">
                 {[...Array(4)].map((_, i) => (
                   <div
                     key={i}
-                    className="w-8 h-8 rounded-full border-2 border-white bg-dark-100 flex items-center justify-center"
+                    className="w-8 h-8 rounded-full border-2 border-obsidian-800 bg-obsidian-700 flex items-center justify-center shadow-sm"
                   >
-                    <span className="text-xs font-medium">
+                    <span className="text-xs font-medium text-gold-500">
                       {String.fromCharCode(65 + i)}
                     </span>
                   </div>
                 ))}
               </div>
-              <span>Joined by <strong>5000+</strong> learners across India</span>
+              <span>Joined by <strong className="text-gold-500">5000+</strong> learners across India</span>
             </motion.div>
           </motion.div>
           
-          {/* Hero Image */}
+          {/* Hero Visualization */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="relative"
+            className="relative hidden lg:block"
           >
-            <div className="bg-white rounded-lg shadow-xl p-4 md:p-6 relative z-10">
-              <div className="bg-gradient-to-br from-primary-100 to-accent-100 rounded-lg overflow-hidden">
-                <div className="aspect-w-16 aspect-h-9 relative w-full h-[300px] sm:h-[400px]">
-                  {/* Placeholder for hero image */}
-                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary-200 to-accent-200">
-                    <div className="text-center">
-                      <div className="text-4xl mb-2">🎓</div>
-                      <div className="text-primary-700 font-medium">Learning Platform Image</div>
+            <div className="relative z-10">
+              <div className="p-1 bg-gradient-to-br from-gold-400 to-gold-600 rounded-lg shadow-gold overflow-hidden">
+                <div className="bg-obsidian-800 rounded-lg p-6 backdrop-blur-sm">
+                  <div className="aspect-w-16 aspect-h-9 relative w-full h-[350px]">
+                    {/* Visualization of the Domain Learning Path */}
+                    <div className="absolute inset-0 p-6">
+                      <div className="relative h-full">
+                        {/* Progress Path */}
+                        <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gold-500/30 transform -translate-x-1/2"></div>
+                        
+                        {/* Phases */}
+                        {['Inception', 'Acceleration', 'Integration', 'Mastery', 'Transcendence'].map((phase, index) => (
+                          <div 
+                            key={phase}
+                            className="absolute left-1/2 transform -translate-x-1/2"
+                            style={{ top: `${index * 22}%` }}
+                          >
+                            <div className="flex items-center justify-center">
+                              <div className="w-4 h-4 rounded-full bg-gold-500 shadow-gold absolute z-10"></div>
+                              <div className="w-8 h-8 rounded-full bg-gold-500/20 absolute animate-pulse"></div>
+                              <div className="absolute left-6 ml-2 whitespace-nowrap">
+                                <div className="text-gold-500 text-sm font-medium">{phase}</div>
+                                <div className="text-xs text-obsidian-300">{(index + 1) * 20}%</div>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                        
+                        {/* Domain Skills */}
+                        <div className="absolute right-0 top-1/4 mr-2">
+                          <div className="bg-obsidian-700 border border-gold-500/20 rounded-lg p-3 inline-block">
+                            <div className="text-sm text-gold-400 font-medium">Full Stack</div>
+                            <div className="text-xs text-obsidian-300">Web Development</div>
+                          </div>
+                        </div>
+                        
+                        <div className="absolute right-0 bottom-1/4 mr-2">
+                          <div className="bg-obsidian-700 border border-gold-500/20 rounded-lg p-3 inline-block">
+                            <div className="text-sm text-gold-400 font-medium">Data Science</div>
+                            <div className="text-xs text-obsidian-300">Machine Learning</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-4 border-t border-obsidian-700 pt-4 flex justify-between items-center">
+                    <div>
+                      <div className="text-xs text-obsidian-400">Current Cohort</div>
+                      <div className="text-gold-500 font-medium">Cohort #7</div>
+                    </div>
+                    <div>
+                      <div className="text-xs text-obsidian-400">Starting</div>
+                      <div className="text-gold-500 font-medium">May 15, 2025</div>
+                    </div>
+                    <div>
+                      <div className="text-xs text-obsidian-400">Seats Left</div>
+                      <div className="text-gold-500 font-medium">12/50</div>
                     </div>
                   </div>
                 </div>
@@ -129,9 +199,9 @@ const Hero = () => {
             </div>
             
             {/* Decorative Elements */}
-            <div className="absolute top-1/2 -right-4 transform translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-accent-100 rounded-lg -rotate-6 z-0"></div>
-            <div className="absolute bottom-12 -left-4 w-8 h-8 bg-primary-200 rounded-lg rotate-12 z-0"></div>
-            <div className="absolute top-12 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-primary-100 rounded-full z-0"></div>
+            <div className="absolute top-1/2 -right-4 transform translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-gold-500/10 rounded-lg -rotate-12 z-0"></div>
+            <div className="absolute bottom-12 -left-4 w-8 h-8 bg-gold-500/20 rounded-lg rotate-12 z-0"></div>
+            <div className="absolute top-12 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-gold-500/10 rounded-full z-0"></div>
           </motion.div>
         </div>
       </div>
