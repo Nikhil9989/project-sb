@@ -1,25 +1,32 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter, Poppins } from 'next/font/google'
+import { Inter, Montserrat, Playfair_Display as PlayfairDisplay } from 'next/font/google'
 
-// Font configuration
+// Font configuration for more elegant, refined typography
 const inter = Inter({ 
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
 })
 
-const poppins = Poppins({
+const montserrat = Montserrat({
+  weight: ['300', '400', '500', '600', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-montserrat',
+})
+
+const playfairDisplay = PlayfairDisplay({
   weight: ['400', '500', '600', '700'],
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-poppins',
+  variable: '--font-playfair',
 })
 
 export const metadata: Metadata = {
-  title: 'SKILL BRIDGE | Domain-Based Learning Platform',
-  description: 'SKILL BRIDGE is an innovative domain-based learning platform bridging the skill gap in education through personalized, industry-aligned learning journeys.',
-  keywords: 'education, skill development, domain-based learning, industry training, personalized learning, India education',
+  title: 'SKILL BRIDGE | Transforming Education with Domain-Based Learning',
+  description: 'SKILL BRIDGE offers cohort-based, domain-focused learning pathways that bridge the skill gap between education and industry demands through personalized, incremental skill development.',
+  keywords: 'education, skill development, domain-based learning, industry training, personalized learning, cohort learning, India education',
 }
 
 export default function RootLayout({
@@ -29,7 +36,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${poppins.variable} font-sans bg-white text-dark-900`}>
+      <body className={`${inter.variable} ${montserrat.variable} ${playfairDisplay.variable} font-sans bg-obsidian-900 text-white`}>
         {children}
       </body>
     </html>
