@@ -1,10 +1,26 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 const CallToAction = () => {
+  // State for seat counter animation
+  const [seatsCount, setSeatsCount] = useState(12);
+  const totalSeats = 50;
+  
+  // Random decrease in available seats to create urgency
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // Random chance to decrease seats (10% chance every 30 seconds)
+      if (Math.random() < 0.1 && seatsCount > 5) {
+        setSeatsCount(prevCount => prevCount - 1);
+      }
+    }, 30000);
+    
+    return () => clearInterval(interval);
+  }, [seatsCount]);
+
   return (
     <section className="py-20 md:py-28 relative overflow-hidden">
       {/* Premium gradient background */}
@@ -76,7 +92,37 @@ const CallToAction = () => {
                   
                   <div className="text-center md:text-left">
                     <div className="text-obsidian-300 text-xs uppercase tracking-wider">Available Seats</div>
-                    <div className="text-gold-500 text-xl md:text-2xl font-semibold">12 of 50</div>
+                    <motion.div 
+                      className="text-gold-500 text-xl md:text-2xl font-semibold flex items-center justify-center md:justify-start"
+                    >
+                      <motion.span
+                        key={seatsCount}
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 20 }}
+                        transition={{ duration: 0.3 }}
+                        className="relative"
+                      >
+                        <span className="relative">
+                          {seatsCount}
+                          {/* Pulsing circle behind the seats count */}
+                          <span className="absolute inset-0 bg-gold-500/20 rounded-full -z-10"></span>
+                        </span>
+                        <span className="text-obsidian-400 text-lg">/</span>
+                        <span className="text-obsidian-400 text-lg">{totalSeats}</span>
+                      </motion.span>
+                      
+                      {/* Urgency indicator if seats are getting low */}
+                      {seatsCount < 15 && (
+                        <motion.span 
+                          className="ml-2 text-xs text-red-400 font-normal"
+                          animate={{ opacity: [0.6, 1, 0.6] }}
+                          transition={{ repeat: Infinity, duration: 1.5 }}
+                        >
+                          (Filling fast!)
+                        </motion.span>
+                      )}
+                    </motion.div>
                   </div>
                   
                   <div className="h-px w-16 bg-obsidian-700 hidden md:block"></div>
