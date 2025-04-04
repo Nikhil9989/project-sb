@@ -6,12 +6,40 @@ import Link from 'next/link';
 
 const CallToAction = () => {
   return (
-    <section className="py-16 md:py-24 relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-r from-primary-600 to-accent-600 opacity-90"></div>
+    <section className="py-20 md:py-28 relative overflow-hidden">
+      {/* Premium gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-r from-obsidian-900 via-obsidian-800 to-obsidian-900 opacity-90"></div>
       
-      {/* Background pattern */}
-      <div className="absolute inset-0 bg-[url('/images/pattern.svg')] bg-repeat opacity-10"></div>
+      {/* Gold texture overlay */}
+      <div className="absolute inset-0 bg-[url('/images/pattern.svg')] bg-repeat opacity-5"></div>
+      
+      {/* Animated gold particles */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(10)].map((_, i) => (
+          <motion.div
+            key={i}
+            initial={{ 
+              x: Math.random() * 100 + '%', 
+              y: Math.random() * 100 + '%', 
+              scale: Math.random() * 0.5 + 0.5 
+            }}
+            animate={{ 
+              y: [Math.random() * 100 + '%', Math.random() * 100 + '%'],
+              opacity: [0.2, 0.5, 0.2],
+            }}
+            transition={{ 
+              repeat: Infinity,
+              duration: Math.random() * 20 + 15,
+              ease: "easeInOut",
+            }}
+            className="absolute w-2 h-2 rounded-full bg-gold-500"
+            style={{ 
+              filter: 'blur(1px)',
+              boxShadow: '0 0 8px 2px rgba(255, 192, 0, 0.3)' 
+            }}
+          ></motion.div>
+        ))}
+      </div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
@@ -21,29 +49,64 @@ const CallToAction = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white">
-              Ready to Bridge the Skill Gap?
+            <span className="text-gold-500 text-sm uppercase tracking-wider font-medium inline-block mb-3">
+              Join Cohort #7
+            </span>
+            
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-white font-display">
+              Ready to <span className="gold-gradient-text">Transform</span> Your Career Trajectory?
             </h2>
             
-            <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Join thousands of learners who are transforming their careers through our domain-based learning approach. Take the first step toward becoming industry-ready.
+            <p className="text-base md:text-lg text-obsidian-200 mb-8 max-w-2xl mx-auto">
+              Join thousands of learners who are transforming their careers through our domain-based 
+              cohort learning approach. Take the first step toward true industry readiness.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/sign-up"
-                className="btn px-8 py-4 text-base md:text-lg font-medium bg-white text-primary-600 hover:bg-white/90 transition-colors"
-              >
-                Start Your Journey
-              </Link>
-              
-              <Link
-                href="/contact"
-                className="btn px-8 py-4 text-base md:text-lg font-medium bg-transparent border-2 border-white text-white hover:bg-white/10 transition-colors"
-              >
-                Talk to an Advisor
-              </Link>
+            <div className="relative inline-block">
+              {/* Gold frame effect */}
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-gold-400 to-gold-600 rounded-lg opacity-70 blur-sm"></div>
+              <div className="relative bg-obsidian-800 rounded-lg p-8 border border-gold-500/20">
+                <div className="flex flex-col md:flex-row md:items-end gap-4 md:gap-8 justify-center mb-6">
+                  <div className="text-center md:text-left">
+                    <div className="text-obsidian-300 text-xs uppercase tracking-wider">Next Cohort Starts</div>
+                    <div className="text-gold-500 text-xl md:text-2xl font-semibold">May 15, 2025</div>
+                  </div>
+                  
+                  <div className="h-px w-16 bg-obsidian-700 hidden md:block"></div>
+                  
+                  <div className="text-center md:text-left">
+                    <div className="text-obsidian-300 text-xs uppercase tracking-wider">Available Seats</div>
+                    <div className="text-gold-500 text-xl md:text-2xl font-semibold">12 of 50</div>
+                  </div>
+                  
+                  <div className="h-px w-16 bg-obsidian-700 hidden md:block"></div>
+                  
+                  <div className="text-center md:text-left">
+                    <div className="text-obsidian-300 text-xs uppercase tracking-wider">Application Deadline</div>
+                    <div className="text-gold-500 text-xl md:text-2xl font-semibold">April 30, 2025</div>
+                  </div>
+                </div>
+                
+                <div className="flex flex-col sm:flex-row gap-4 justify-center mt-4">
+                  <Link
+                    href="/enroll"
+                    className="btn btn-gold px-8 py-3 text-sm shadow-gold relative overflow-hidden group"
+                  >
+                    <span className="relative z-10">Secure Your Spot</span>
+                    {/* Gold shimmer effect */}
+                    <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-gold-500/0 via-gold-500/30 to-gold-500/0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </Link>
+                  
+                  <Link
+                    href="/contact"
+                    className="btn btn-outline-gold px-8 py-3 text-sm"
+                  >
+                    Schedule Consultation
+                  </Link>
+                </div>
+              </div>
             </div>
+            
           </motion.div>
           
           <motion.div
@@ -51,9 +114,9 @@ const CallToAction = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.5, duration: 0.5 }}
-            className="mt-12 text-white/80 text-sm"
+            className="mt-8 text-obsidian-400 text-xs"
           >
-            <p>No credit card required. Start with a free consultation.</p>
+            <p>No credit card required. Start with a free consultation to determine your fit for the cohort.</p>
           </motion.div>
         </div>
       </div>
