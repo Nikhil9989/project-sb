@@ -70,7 +70,7 @@ const Header = () => {
                 href={link.href}
                 className="font-medium text-sm tracking-wide hover:text-gold-500 transition-colors relative group"
               >
-                <span className={`${scrolled ? 'text-obsidian-200' : 'text-white'}`}>
+                <span className="text-white">
                   {link.name}
                 </span>
                 <span className="absolute -bottom-1 left-0 w-0 h-px bg-gold-500 group-hover:w-full transition-all duration-300"></span>
@@ -86,6 +86,12 @@ const Header = () => {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="hidden md:block"
         >
+          <Link
+            href="/contact"
+            className="btn btn-outline-gold px-4 py-2 text-xs font-medium mr-3 group relative overflow-hidden"
+          >
+            <span className="relative z-10">Contact Us</span>
+          </Link>
           <Link
             href="/enroll"
             className="btn btn-gold px-5 py-2 text-xs font-medium group relative overflow-hidden"
@@ -134,8 +140,15 @@ const Header = () => {
                 </Link>
               ))}
               <Link
+                href="/contact"
+                className="btn btn-outline-gold w-full text-center mt-2"
+                onClick={() => setIsOpen(false)}
+              >
+                Contact Us
+              </Link>
+              <Link
                 href="/enroll"
-                className="btn btn-gold w-full text-center mt-4"
+                className="btn btn-gold w-full text-center mt-2"
                 onClick={() => setIsOpen(false)}
               >
                 Join Next Cohort
