@@ -50,6 +50,26 @@ const features = [
   },
 ];
 
+// Icon animation variants
+const iconVariants = {
+  hidden: { scale: 0.8, opacity: 0.5 },
+  visible: {
+    scale: 1, 
+    opacity: 1,
+    transition: { 
+      duration: 0.3 
+    }
+  },
+  hover: {
+    scale: 1.2,
+    rotate: [0, 10, -10, 0],
+    transition: {
+      duration: 0.5,
+      ease: "easeInOut"
+    }
+  }
+};
+
 const KeyFeatures = () => {
   return (
     <section className="py-20 md:py-24 bg-obsidian-900/95 texture-overlay relative overflow-hidden">
@@ -93,9 +113,16 @@ const KeyFeatures = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-gold-500/0 via-gold-500/5 to-gold-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 
                 <div className="relative">
-                  <div className="p-2.5 rounded-lg bg-gold-500/10 text-gold-500 inline-block mb-4">
+                  <motion.div 
+                    className="p-2.5 rounded-lg bg-gold-500/10 text-gold-500 inline-block mb-4"
+                    variants={iconVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    whileHover="hover"
+                    viewport={{ once: true }}
+                  >
                     {feature.icon}
-                  </div>
+                  </motion.div>
                   <h3 className="text-lg font-semibold mb-3 text-white">{feature.title}</h3>
                   <p className="text-obsidian-300 text-sm">{feature.description}</p>
                 </div>
@@ -111,7 +138,7 @@ const KeyFeatures = () => {
           transition={{ delay: 0.8, duration: 0.5 }}
           className="mt-16 text-center"
         >
-          <div className="inline-block relative">
+          <div className="inline-block relative z-10">
             {/* Cohort badge */}
             <div className="absolute -top-3 -right-3 cohort-badge">
               Cohort-Based
