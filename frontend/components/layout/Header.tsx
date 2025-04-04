@@ -9,9 +9,9 @@ const navLinks = [
   { name: 'Home', href: '/' },
   { name: 'About Us', href: '/about' },
   { name: 'Learning Paths', href: '/learning-paths' },
-  { name: 'Courses', href: '/courses' },
+  { name: 'Domains', href: '/domains' },
   { name: 'Mentorship', href: '/mentorship' },
-  { name: 'Community', href: '/community' },
+  { name: 'Alumni', href: '/alumni' },
 ];
 
 const Header = () => {
@@ -37,20 +37,22 @@ const Header = () => {
   return (
     <header
       className={`fixed w-full z-30 transition-all duration-300 ${
-        scrolled ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'
+        scrolled ? 'bg-obsidian-900/95 backdrop-blur-sm border-b border-gold-500/10 py-3' : 'bg-transparent py-5'
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
         {/* Logo */}
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center group">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             className="flex items-center"
           >
-            <span className="text-primary-600 font-heading font-bold text-2xl md:text-3xl">
-              SKILL<span className="text-accent-600">BRIDGE</span>
+            <span className="font-display font-bold text-2xl md:text-3xl relative">
+              <span className="text-white">SKILL</span>
+              <span className="text-gold-500">BRIDGE</span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold-500 group-hover:w-full transition-all duration-300"></span>
             </span>
           </motion.div>
         </Link>
@@ -66,11 +68,12 @@ const Header = () => {
             >
               <Link
                 href={link.href}
-                className={`font-medium hover:text-primary-600 transition-colors ${
-                  scrolled ? 'text-dark-800' : 'text-dark-800'
-                }`}
+                className="font-medium text-sm tracking-wide hover:text-gold-500 transition-colors relative group"
               >
-                {link.name}
+                <span className={`${scrolled ? 'text-obsidian-200' : 'text-white'}`}>
+                  {link.name}
+                </span>
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-gold-500 group-hover:w-full transition-all duration-300"></span>
               </Link>
             </motion.div>
           ))}
@@ -84,10 +87,12 @@ const Header = () => {
           className="hidden md:block"
         >
           <Link
-            href="/sign-up"
-            className="btn btn-primary ml-8"
+            href="/enroll"
+            className="btn btn-gold px-5 py-2 text-xs font-medium group relative overflow-hidden"
           >
-            Get Started
+            <span className="relative z-10">Join Next Cohort</span>
+            {/* Gold shimmer effect */}
+            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-gold-500/0 via-gold-500/30 to-gold-500/0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </Link>
         </motion.div>
 
@@ -95,9 +100,8 @@ const Header = () => {
         <div className="md:hidden flex items-center">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`p-2 rounded-md focus:outline-none ${
-              scrolled ? 'text-dark-800' : 'text-dark-800'
-            }`}
+            className="p-2 text-white focus:outline-none"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
           >
             {isOpen ? (
               <FaTimes className="h-6 w-6" />
@@ -115,7 +119,7 @@ const Header = () => {
           animate={{ opacity: 1, height: 'auto' }}
           exit={{ opacity: 0, height: 0 }}
           transition={{ duration: 0.3 }}
-          className="md:hidden bg-white shadow-lg"
+          className="md:hidden bg-obsidian-800 border-b border-gold-500/10"
         >
           <div className="container mx-auto px-4 py-4">
             <nav className="flex flex-col space-y-4">
@@ -123,18 +127,18 @@ const Header = () => {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="font-medium text-dark-800 hover:text-primary-600 transition-colors py-2"
+                  className="font-medium text-white hover:text-gold-500 transition-colors py-2 border-b border-obsidian-700"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.name}
                 </Link>
               ))}
               <Link
-                href="/sign-up"
-                className="btn btn-primary w-full text-center mt-4"
+                href="/enroll"
+                className="btn btn-gold w-full text-center mt-4"
                 onClick={() => setIsOpen(false)}
               >
-                Get Started
+                Join Next Cohort
               </Link>
             </nav>
           </div>
