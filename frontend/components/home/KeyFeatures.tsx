@@ -8,72 +8,77 @@ import {
   FaUserFriends, 
   FaLaptopCode, 
   FaChartLine, 
-  FaComments 
+  FaUsers 
 } from 'react-icons/fa';
 
 const features = [
   {
-    icon: <FaBrain className="h-10 w-10" />,
+    icon: <FaBrain className="h-6 w-6" />,
     title: 'AI-Powered Personalized Learning',
     description:
       'Customized learning paths adapt to your individual strengths, weaknesses, and career goals to optimize your learning journey.',
-    color: 'bg-primary-50 text-primary-600',
   },
   {
-    icon: <FaProjectDiagram className="h-10 w-10" />,
+    icon: <FaProjectDiagram className="h-6 w-6" />,
     title: 'Industry-Aligned Projects',
     description:
       'Work on real-world capstone projects that solve actual business problems, reviewed by hiring managers and industry leaders.',
-    color: 'bg-secondary-50 text-secondary-600',
   },
   {
-    icon: <FaUserFriends className="h-10 w-10" />,
+    icon: <FaUserFriends className="h-6 w-6" />,
     title: '1-on-1 Expert Mentorship',
     description:
       'Receive personalized guidance from industry professionals who provide feedback, career strategy, and technical support.',
-    color: 'bg-accent-50 text-accent-600',
   },
   {
-    icon: <FaLaptopCode className="h-10 w-10" />,
-    title: 'Hybrid Learning Model',
+    icon: <FaLaptopCode className="h-6 w-6" />,
+    title: 'Hybrid Learning Environment',
     description:
       'Combine the flexibility of online learning with the support of in-person sessions at our partner institutions.',
-    color: 'bg-primary-50 text-primary-600',
   },
   {
-    icon: <FaChartLine className="h-10 w-10" />,
+    icon: <FaChartLine className="h-6 w-6" />,
     title: 'Placement Assistance',
     description:
       'Get matched with relevant employers through our AI-driven job recommendations and network of hiring partners.',
-    color: 'bg-secondary-50 text-secondary-600',
   },
   {
-    icon: <FaComments className="h-10 w-10" />,
-    title: 'Community-Driven Learning',
+    icon: <FaUsers className="h-6 w-6" />,
+    title: 'Cohort-Based Progression',
     description:
-      'Collaborate with peers through code reviews, group projects, and knowledge sharing to enhance your learning experience.',
-    color: 'bg-accent-50 text-accent-600',
+      'Move through your learning journey alongside peers who provide support, collaboration, and networking opportunities.',
   },
 ];
 
 const KeyFeatures = () => {
   return (
-    <section className="py-16 md:py-24 bg-dark-50">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="py-20 md:py-24 bg-obsidian-900/95 texture-overlay relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute inset-0 bg-[url('/images/pattern.svg')] bg-repeat opacity-3 z-0"></div>
+      
+      {/* Gold accent elements */}
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1/6 h-px bg-gradient-to-r from-transparent via-gold-500 to-transparent"></div>
+      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/6 h-px bg-gradient-to-r from-transparent via-gold-500 to-transparent"></div>
+      
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center max-w-3xl mx-auto mb-12 md:mb-16"
+          className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Key Features of SKILL BRIDGE</h2>
-          <p className="text-lg text-dark-600">
-            Our comprehensive approach combines the best of expert guidance, peer collaboration, and AI-powered personalization.
+          <span className="text-gold-500 text-sm uppercase tracking-wider font-medium">Why Choose Us</span>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mt-2 mb-6">
+            <span className="gold-gradient-text">Key Features</span> of SKILL BRIDGE
+          </h2>
+          <p className="text-obsidian-200 text-base md:text-lg">
+            Our comprehensive approach combines the best of expert guidance, peer collaboration, 
+            and AI-powered personalization to ensure your success.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
@@ -81,13 +86,20 @@ const KeyFeatures = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="bg-white rounded-lg shadow-card p-6 hover:shadow-card-hover transition-shadow"
+              className="group"
             >
-              <div className={`${feature.color} rounded-full w-16 h-16 flex items-center justify-center mb-4`}>
-                {feature.icon}
+              <div className="bg-obsidian-800 border border-obsidian-700 group-hover:border-gold-500/40 rounded-lg p-6 h-full transition-all duration-300 hover:shadow-card-hover relative overflow-hidden">
+                {/* Subtle background glow on hover */}
+                <div className="absolute inset-0 bg-gradient-to-r from-gold-500/0 via-gold-500/5 to-gold-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                
+                <div className="relative">
+                  <div className="p-2.5 rounded-lg bg-gold-500/10 text-gold-500 inline-block mb-4">
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-lg font-semibold mb-3 text-white">{feature.title}</h3>
+                  <p className="text-obsidian-300 text-sm">{feature.description}</p>
+                </div>
               </div>
-              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-              <p className="text-dark-600">{feature.description}</p>
             </motion.div>
           ))}
         </div>
@@ -99,24 +111,33 @@ const KeyFeatures = () => {
           transition={{ delay: 0.8, duration: 0.5 }}
           className="mt-16 text-center"
         >
-          <a
-            href="/features"
-            className="btn btn-primary px-8 py-3 text-base inline-flex items-center"
-          >
-            Explore All Features
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 ml-2"
-              viewBox="0 0 20 20"
-              fill="currentColor"
+          <div className="inline-block relative">
+            {/* Cohort badge */}
+            <div className="absolute -top-3 -right-3 cohort-badge">
+              Cohort-Based
+            </div>
+            
+            <a
+              href="/features"
+              className="btn btn-gold px-8 py-3 text-sm inline-flex items-center shadow-gold relative overflow-hidden group"
             >
-              <path
-                fillRule="evenodd"
-                d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </a>
+              <span className="relative z-10">Explore All Features</span>
+              {/* Gold shimmer effect */}
+              <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-gold-500/0 via-gold-500/30 to-gold-500/0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 ml-2 relative z-10"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </a>
+          </div>
         </motion.div>
       </div>
     </section>
