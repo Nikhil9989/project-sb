@@ -163,11 +163,8 @@ const Footer = () => {
         </div>
 
         {/* Footer Bottom Section */}
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <p className="text-obsidian-400 text-xs">
-            &copy; {currentYear} SKILL BRIDGE. All rights reserved.
-          </p>
-          <div className="mt-4 md:mt-0 flex flex-wrap justify-center gap-4">
+        <div className="flex flex-col items-center space-y-4">
+          <div className="flex flex-wrap justify-center gap-4">
             <a
               href="#"
               className="text-obsidian-400 hover:text-gold-500 transition-colors text-xs"
@@ -187,6 +184,9 @@ const Footer = () => {
               Support
             </a>
           </div>
+          <p className="text-obsidian-400 text-xs text-center">
+            &copy; {currentYear} SKILL BRIDGE. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
