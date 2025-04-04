@@ -43,6 +43,26 @@ const fadeInUpVariants = {
   }),
 };
 
+// Icon animation variants
+const iconVariants = {
+  hidden: { scale: 0.8, opacity: 0.5 },
+  visible: {
+    scale: 1, 
+    opacity: 1,
+    transition: { 
+      duration: 0.3 
+    }
+  },
+  hover: {
+    scale: 1.2,
+    rotate: [0, 10, 0, -10, 0],
+    transition: {
+      duration: 0.5,
+      ease: "easeInOut"
+    }
+  }
+};
+
 const ProblemStatement = () => {
   return (
     <section className="py-20 md:py-24 bg-obsidian-800/50 relative">
@@ -76,12 +96,19 @@ const ProblemStatement = () => {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeInUpVariants}
-              className="bg-obsidian-800 rounded-lg p-6 border border-gold-500/10 hover:border-gold-500/30 transition-colors duration-300 shadow-card"
+              className="bg-obsidian-800 rounded-lg p-6 border border-gold-500/10 hover:border-gold-500/30 transition-colors duration-300 shadow-card group"
             >
               <div className="flex items-start">
-                <div className="mr-4 p-3 rounded-full bg-gold-500/10 text-gold-500">
+                <motion.div 
+                  className="mr-4 p-3 rounded-full bg-gold-500/10 text-gold-500"
+                  variants={iconVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  whileHover="hover"
+                  viewport={{ once: true }}
+                >
                   {problem.icon}
-                </div>
+                </motion.div>
                 <div>
                   <h3 className="text-lg font-semibold mb-2 text-white">{problem.title}</h3>
                   <p className="text-obsidian-300 text-sm">{problem.description}</p>
