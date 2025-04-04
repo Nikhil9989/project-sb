@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const Hero = () => {
   return (
-    <section className="relative overflow-hidden pt-24 pb-20 md:pt-32 md:pb-28 bg-obsidian-900">
+    <section className="relative overflow-hidden min-h-screen flex items-center pt-16 pb-20 bg-obsidian-900">
       {/* Gold pattern background */}
       <div className="absolute inset-0 bg-[url('/images/pattern.svg')] bg-repeat opacity-5 z-0"></div>
       
@@ -46,7 +46,7 @@ const Hero = () => {
         ))}
       </div>
 
-      <div className="container relative z-10">
+      <div className="container relative z-10 w-full py-16 md:py-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Hero Content */}
           <motion.div
@@ -146,36 +146,63 @@ const Hero = () => {
                         
                         {/* Phases */}
                         {['Inception', 'Acceleration', 'Integration', 'Mastery', 'Transcendence'].map((phase, index) => (
-                          <div 
+                          <motion.div 
                             key={phase}
                             className="absolute left-1/2 transform -translate-x-1/2"
                             style={{ top: `${index * 22}%` }}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ 
+                              delay: 0.5 + (index * 0.1),
+                              duration: 0.6,
+                              ease: "easeOut"
+                            }}
                           >
                             <div className="flex items-center justify-center">
-                              <div className="w-4 h-4 rounded-full bg-gold-500 shadow-gold absolute z-10"></div>
+                              <motion.div 
+                                className="w-4 h-4 rounded-full bg-gold-500 shadow-gold absolute z-10"
+                                animate={{ scale: [1, 1.3, 1] }}
+                                transition={{
+                                  duration: 2,
+                                  repeat: Infinity,
+                                  repeatType: "reverse",
+                                  ease: "easeInOut",
+                                  delay: index * 0.2
+                                }}
+                              ></motion.div>
                               <div className="w-8 h-8 rounded-full bg-gold-500/20 absolute animate-pulse"></div>
                               <div className="absolute left-6 ml-2 whitespace-nowrap">
                                 <div className="text-gold-500 text-sm font-medium">{phase}</div>
                                 <div className="text-xs text-obsidian-300">{(index + 1) * 20}%</div>
                               </div>
                             </div>
-                          </div>
+                          </motion.div>
                         ))}
                         
                         {/* Domain Skills */}
-                        <div className="absolute right-0 top-1/4 mr-2">
+                        <motion.div 
+                          className="absolute right-0 top-1/4 mr-2"
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 1.2, duration: 0.5 }}
+                        >
                           <div className="bg-obsidian-700 border border-gold-500/20 rounded-lg p-3 inline-block">
                             <div className="text-sm text-gold-400 font-medium">Full Stack</div>
                             <div className="text-xs text-obsidian-300">Web Development</div>
                           </div>
-                        </div>
+                        </motion.div>
                         
-                        <div className="absolute right-0 bottom-1/4 mr-2">
+                        <motion.div 
+                          className="absolute right-0 bottom-1/4 mr-2"
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 1.4, duration: 0.5 }}
+                        >
                           <div className="bg-obsidian-700 border border-gold-500/20 rounded-lg p-3 inline-block">
                             <div className="text-sm text-gold-400 font-medium">Data Science</div>
                             <div className="text-xs text-obsidian-300">Machine Learning</div>
                           </div>
-                        </div>
+                        </motion.div>
                       </div>
                     </div>
                   </div>
@@ -191,7 +218,18 @@ const Hero = () => {
                     </div>
                     <div>
                       <div className="text-xs text-obsidian-400">Seats Left</div>
-                      <div className="text-gold-500 font-medium">12/50</div>
+                      <motion.div 
+                        className="text-gold-500 font-medium"
+                        animate={{ scale: [1, 1.1, 1] }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          repeatType: "reverse",
+                          ease: "easeInOut"
+                        }}
+                      >
+                        12/50
+                      </motion.div>
                     </div>
                   </div>
                 </div>
