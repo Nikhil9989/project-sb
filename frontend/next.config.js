@@ -1,13 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  images: {
-    domains: ['api.placeholder.com'],
-  },
-  webpack: (config) => {
-    config.resolve.fallback = { fs: false, net: false, tls: false };
-    return config;
-  }
-};
+const nextConfig = {}
 
-module.exports = nextConfig;
+module.exports = nextConfig
