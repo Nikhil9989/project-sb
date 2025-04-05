@@ -1,0 +1,8 @@
+node_modules
+.next
+public
+components/about/TeamSection.tsx
+components/contact/ContactForm.tsx
+components/home/DomainApproach.tsx
+components/home/HeroImproved.tsx
+components/ui/AnimatedCounters.tsx
