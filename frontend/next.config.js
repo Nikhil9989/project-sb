@@ -14,11 +14,13 @@ const nextConfig = {
   // Ensures build produces static output
   trailingSlash: true,
   
-  // Use relative paths for GitHub Pages
+  // Use empty basePath for custom domain
   basePath: '',
-  assetPrefix: './',
   
-  // Fix GitHub Pages routes for images
+  // Remove asset prefix for custom domain
+  // assetPrefix: './',
+  
+  // Fix image loading for static export
   images: {
     unoptimized: true,
   },
