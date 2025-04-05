@@ -5,20 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SKILL BRIDGE | Transforming Education with Domain-Based Learning</title>
   <meta name="description" content="SKILL BRIDGE offers cohort-based, domain-focused learning pathways that bridge the skill gap between education and industry demands through personalized, incremental skill development.">
-  <link rel="stylesheet" href="./styles.css">
-  <script>
-    // Handle GitHub Pages SPA route params
-    (function() {
-      var redirectParam = new URLSearchParams(window.location.search).get('p');
-      if (redirectParam) {
-        // Clean up URL by removing the 'p' parameter
-        var cleanUrl = window.location.protocol + '//' + window.location.host + 
-                      (redirectParam ? '/' + redirectParam : '') + 
-                      window.location.hash;
-        window.history.replaceState(null, null, cleanUrl);
-      }
-    })();
-  </script>
   <style>
     body, html {
       margin: 0;
@@ -37,6 +23,7 @@
       align-items: center;
       height: 100vh;
       text-align: center;
+      padding: 0 20px;
     }
     
     .logo {
@@ -70,8 +57,15 @@
       line-height: 1.6;
     }
     
-    .button {
+    .button-group {
       margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+    
+    .button {
       padding: 0.75rem 1.5rem;
       background-color: #FFC107;
       color: #121212;
@@ -86,6 +80,30 @@
     .button:hover {
       background-color: #e6af00;
     }
+    
+    .button-outline {
+      padding: 0.75rem 1.5rem;
+      background-color: transparent;
+      color: #FFC107;
+      font-weight: bold;
+      border: 1px solid #FFC107;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.2s;
+    }
+    
+    .button-outline:hover {
+      background-color: rgba(255, 193, 7, 0.1);
+    }
+    
+    .status-message {
+      margin-top: 2rem;
+      padding: 1rem;
+      border-radius: 0.25rem;
+      background-color: rgba(0, 0, 0, 0.3);
+      max-width: 600px;
+    }
   </style>
 </head>
 <body>
@@ -93,16 +111,17 @@
     <div class="logo">SKILL<span class="gold-text">BRIDGE</span></div>
     <div class="spinner"></div>
     <div class="message">
-      Loading the SKILL BRIDGE experience. Please wait a moment while we prepare the domain-based learning platform for you.
+      Welcome to the SKILL BRIDGE domain-based learning platform. Our website is currently being updated with new features and improvements.
     </div>
-    <a href="https://github.com/Nikhil9989/project-sb" class="button">Visit Project Repository</a>
+    
+    <div class="status-message">
+      <strong>Status:</strong> The development team is working on resolving deployment issues. Please check back soon or visit our GitHub repository for the latest updates.
+    </div>
+    
+    <div class="button-group">
+      <a href="https://github.com/Nikhil9989/project-sb" class="button">View GitHub Repository</a>
+      <a href="mailto:info@skillbridge.edu" class="button-outline">Contact Support</a>
+    </div>
   </div>
-  
-  <script>
-    // Redirect to the correct page
-    setTimeout(function() {
-      window.location.href = './frontend/index.html';
-    }, 3000);
-  </script>
 </body>
 </html>
