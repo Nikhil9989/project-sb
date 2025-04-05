@@ -16,12 +16,13 @@ SKILL BRIDGE addresses the critical disconnect between education and employment 
 ├── frontend/                # Next.js frontend application
 │   ├── app/                 # Next.js App Router pages and layouts
 │   ├── components/          # Reusable React components
+│   │   ├── ui/              # UI components (buttons, cards, etc.)
+│   │   └── layout/          # Layout components (header, footer, sidebar)
 │   ├── hooks/               # Custom React hooks
 │   ├── lib/                 # Library code and utilities
 │   ├── public/              # Static assets
-│   ├── styles/              # Global styles and CSS modules
-│   └── utils/               # Utility functions
-├── docs/                    # Documentation and resources
+│   ├── utils/               # Utility functions
+│   └── middleware.ts        # Next.js middleware
 └── backend/                 # Backend microservices (to be implemented)
 ```
 
@@ -40,8 +41,8 @@ SKILL BRIDGE addresses the critical disconnect between education and employment 
 - **Framework**: Next.js with React
 - **Styling**: TailwindCSS
 - **State Management**: React Hooks and Context API
-- **Animations**: Framer Motion and GSAP
-- **Authentication**: NextAuth.js
+- **Animations**: Framer Motion
+- **Authentication**: NextAuth.js (planned)
 
 ### Backend (Planned)
 - **Architecture**: Microservices using Golang
@@ -80,6 +81,14 @@ SKILL BRIDGE addresses the critical disconnect between education and employment 
    ```
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+
+### Recent Fixes
+
+#### April 2025
+- Fixed an issue with the `@types/framer-motion` dependency by removing it, as Framer Motion includes its own TypeScript types
+- Updated project structure to match Next.js 14 app directory conventions
+- Corrected paths in tsconfig.json and tailwind.config.js
+- Added CI/CD pipeline with GitHub Actions
 
 ### Environment Variables
 
