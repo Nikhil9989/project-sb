@@ -20,7 +20,6 @@
     "typescript": "^5.3.3"
   },
   "devDependencies": {
-    "@types/framer-motion": "^10.16.7",
     "autoprefixer": "^10.4.17",
     "eslint": "^8.56.0",
     "eslint-config-next": "^14.1.0",
