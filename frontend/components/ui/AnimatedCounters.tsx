@@ -1,6 +1,17 @@
 import React, { useState, useEffect } from 'react';
 
-export const AnimatedCounter = ({ label, count, duration = 2000 }) => {
+interface AnimatedCounterProps {
+  label: string;
+  count: number;
+  duration?: number;
+}
+
+interface AnimatedDateDisplayProps {
+  label: string;
+  date: string | Date;
+}
+
+export const AnimatedCounter: React.FC<AnimatedCounterProps> = ({ label, count, duration = 2000 }) => {
   const [currentCount, setCurrentCount] = useState(0);
   
   useEffect(() => {
@@ -32,7 +43,7 @@ export const AnimatedCounter = ({ label, count, duration = 2000 }) => {
   );
 };
 
-export const AnimatedDateDisplay = ({ label, date }) => {
+export const AnimatedDateDisplay: React.FC<AnimatedDateDisplayProps> = ({ label, date }) => {
   const [isVisible, setIsVisible] = useState(false);
   
   useEffect(() => {
@@ -46,6 +57,12 @@ export const AnimatedDateDisplay = ({ label, date }) => {
   // Formats the date if it's a string
   const formattedDate = typeof date === 'string' 
     ? new Date(date).toLocaleDateString('en-US', { 
+        month: 'short', 
+        day: 'numeric', 
+        year: 'numeric'
+      })
+    : date instanceof Date 
+    ? date.toLocaleDateString('en-US', { 
         month: 'short', 
         day: 'numeric', 
         year: 'numeric'
@@ -68,7 +85,7 @@ export const AnimatedDateDisplay = ({ label, date }) => {
   );
 };
 
-export const CohortInfoBanner = () => {
+export const CohortInfoBanner: React.FC = () => {
   return (
     <div className="bg-gradient-to-r from-blue-50 to-indigo-50 py-6 px-4 rounded-xl shadow-sm">
       <div className="container mx-auto">
