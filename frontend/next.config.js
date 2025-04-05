@@ -17,9 +17,6 @@ const nextConfig = {
   // Use empty basePath for custom domain
   basePath: '',
   
-  // Remove asset prefix for custom domain
-  // assetPrefix: './',
-  
   // Fix image loading for static export
   images: {
     unoptimized: true,
