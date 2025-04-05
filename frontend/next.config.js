@@ -8,13 +8,23 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  // Configure output directory
-  distDir: 'out',
-  // Skip touch .nojekyll
-  skipTrailingSlashRedirect: true,
-  skipMiddlewareUrlNormalize: true,
-  // Static export
+  // Configure output directory for static export
   output: 'export',
+  
+  // Ensures build produces static output
+  trailingSlash: true,
+  
+  // Use relative paths for GitHub Pages
+  basePath: '',
+  assetPrefix: './',
+  
+  // Fix GitHub Pages routes for images
+  images: {
+    unoptimized: true,
+  },
+  
+  // Set to true for proper GitHub Pages handling
+  skipTrailingSlashRedirect: false
 }
 
 module.exports = nextConfig
