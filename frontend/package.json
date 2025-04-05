@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --no-strict",
+    "lint": "next lint",
     "format": "prettier --write 'app/**/*.{js,jsx,ts,tsx,css,md,json}' 'components/**/*.{js,jsx,ts,tsx,css,md,json}'"
   },
   "dependencies": {
