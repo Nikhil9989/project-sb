@@ -1,124 +1,161 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ChevronLeft, ChevronRight, Users, Star, Clock, LightbulbIcon, Briefcase } from 'lucide-react';
+
+const advantages = [
+  {
+    id: 1,
+    title: 'Peer Learning',
+    description: 'Learn alongside motivated peers with different perspectives to enhance understanding and collaboration.',
+    icon: <Users className="w-6 h-6" />,
+    color: 'from-blue-500/20 to-purple-500/20',
+  },
+  {
+    id: 2,
+    title: 'Structured Timeline',
+    description: 'Follow a well-defined learning path with milestone-based progress to keep you on track toward mastery.',
+    icon: <Clock className="w-6 h-6" />,
+    color: 'from-emerald-500/20 to-teal-500/20',
+  },
+  {
+    id: 3,
+    title: 'Accountability',
+    description: 'Stay motivated with regular check-ins, deadlines, and support from mentors and peers.',
+    icon: <Star className="w-6 h-6" />,
+    color: 'from-amber-500/20 to-yellow-500/20',
+  },
+  {
+    id: 4,
+    title: 'Collaborative Learning',
+    description: 'Engage in group projects that mimic real workplace environments and develop teamwork skills.',
+    icon: <LightbulbIcon className="w-6 h-6" />,
+    color: 'from-pink-500/20 to-rose-500/20',
+  },
+  {
+    id: 5,
+    title: 'Industry Exposure',
+    description: 'Get direct interaction with hiring managers and industry experts throughout your learning journey.',
+    icon: <Briefcase className="w-6 h-6" />,
+    color: 'from-indigo-500/20 to-violet-500/20',
+  },
+];
 
 const CohortAdvantageCarousel = () => {
-  const [current, setCurrent] = useState(0);
-  const [autoplay, setAutoplay] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
   
-  const advantages = [
-    {
-      title: "Personalized Learning Paths",
-      description: "AI-powered assessment creates custom roadmaps based on your skill level, interests, and career goals.",
-      icon: "🧠",
-    },
-    {
-      title: "Industry-Aligned Projects",
-      description: "Work on real-world projects reviewed by hiring managers and industry leaders.",
-      icon: "🏆",
-    },
-    {
-      title: "1-on-1 Expert Mentorship",
-      description: "Receive personalized guidance from industry professionals to accelerate your learning.",
-      icon: "👨‍🏫",
-    },
-    {
-      title: "Peer Accountability",
-      description: "Learn alongside motivated peers who help keep you on track toward your goals.",
-      icon: "👥",
-    },
-    {
-      title: "Job-Ready Skills",
-      description: "Graduate with practical skills that employers actually need, not just theoretical knowledge.",
-      icon: "💼",
-    }
-  ];
-
+  const nextSlide = () => {
+    setDirection(1);
+    setCurrentIndex((prevIndex) => (prevIndex === advantages.length - 1 ? 0 : prevIndex + 1));
+  };
+  
+  const prevSlide = () => {
+    setDirection(-1);
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? advantages.length - 1 : prevIndex - 1));
+  };
+  
+  // Auto slide every 5 seconds
   useEffect(() => {
-    // Fix the TypeScript error by properly typing the interval
-    let interval: NodeJS.Timeout | undefined;
+    const intervalId = setInterval(() => {
+      nextSlide();
+    }, 5000);
     
-    if (autoplay) {
-      interval = setInterval(() => {
-        setCurrent((current) => (current === advantages.length - 1 ? 0 : current + 1));
-      }, 5000);
-    }
-    
-    return () => {
-      if (interval) clearInterval(interval);
-    };
-  }, [autoplay, advantages.length]);
-
-  const next = () => {
-    setCurrent(current === advantages.length - 1 ? 0 : current + 1);
-    setAutoplay(false);
-  };
-
-  const prev = () => {
-    setCurrent(current === 0 ? advantages.length - 1 : current - 1);
-    setAutoplay(false);
-  };
-
+    return () => clearInterval(intervalId);
+  }, []);
+  
+  const currentAdvantage = advantages[currentIndex];
+  
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-12">
-          The Cohort Advantage
-        </h2>
+    <section className="py-20 bg-obsidian-900">
+      <div className="container mx-auto px-4 md:px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <span className="cohort-badge mb-4">COHORT-BASED LEARNING</span>
+          <h2 className="text-3xl md:text-4xl font-bold font-heading mb-6">
+            The <span className="text-gold-500">Cohort Advantage</span>
+          </h2>
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            Our cohort-based approach enhances learning through community, structure, and accountability
+          </p>
+        </motion.div>
         
-        <div className="relative max-w-4xl mx-auto">
-          <div className="overflow-hidden rounded-xl bg-white shadow-lg">
-            <div 
-              className="transition-all duration-500 ease-in-out flex"
-              style={{ transform: `translateX(-${current * 100}%)` }}
+        <div className="relative max-w-5xl mx-auto">
+          <div className="bg-obsidian-800 rounded-2xl p-8 md:p-12 shadow-2xl border border-gold-500/10 relative overflow-hidden min-h-[300px]">
+            {/* Background gradient */}
+            <div className={`absolute top-0 right-0 w-full h-full bg-gradient-to-br ${currentAdvantage.color} opacity-20 rounded-2xl`}></div>
+            
+            <motion.div
+              key={currentAdvantage.id}
+              initial={{ 
+                opacity: 0, 
+                x: direction > 0 ? 100 : -100 
+              }}
+              animate={{ 
+                opacity: 1, 
+                x: 0 
+              }}
+              exit={{ 
+                opacity: 0, 
+                x: direction > 0 ? -100 : 100 
+              }}
+              transition={{ duration: 0.6 }}
+              className="relative z-10"
             >
-              {advantages.map((advantage, index) => (
-                <div 
-                  key={index} 
-                  className="min-w-full p-8 flex flex-col items-center text-center"
-                >
-                  <div className="text-5xl mb-4">{advantage.icon}</div>
-                  <h3 className="text-xl md:text-2xl font-bold mb-4 font-display">
-                    {advantage.title}
-                  </h3>
-                  <p className="text-gray-600">{advantage.description}</p>
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
+                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-gold-500/20 to-gold-500/10 flex items-center justify-center text-gold-500 flex-shrink-0">
+                  {currentAdvantage.icon}
                 </div>
-              ))}
-            </div>
+                
+                <div className="text-center md:text-left">
+                  <h3 className="text-2xl font-bold mb-4">{currentAdvantage.title}</h3>
+                  <p className="text-gray-300 text-lg">{currentAdvantage.description}</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+          
+          {/* Navigation buttons */}
+          <div className="absolute top-1/2 left-0 right-0 transform -translate-y-1/2 flex justify-between px-4">
+            <button
+              onClick={prevSlide}
+              className="w-10 h-10 rounded-full bg-obsidian-800 border border-gold-500/20 flex items-center justify-center text-gold-500 hover:bg-obsidian-700 transition-colors focus:outline-none"
+              aria-label="Previous advantage"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            
+            <button
+              onClick={nextSlide}
+              className="w-10 h-10 rounded-full bg-obsidian-800 border border-gold-500/20 flex items-center justify-center text-gold-500 hover:bg-obsidian-700 transition-colors focus:outline-none"
+              aria-label="Next advantage"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
           </div>
           
           {/* Navigation dots */}
-          <div className="flex justify-center mt-6">
+          <div className="flex justify-center mt-8 space-x-3">
             {advantages.map((_, index) => (
               <button
                 key={index}
                 onClick={() => {
-                  setCurrent(index);
-                  setAutoplay(false);
+                  setDirection(index > currentIndex ? 1 : -1);
+                  setCurrentIndex(index);
                 }}
-                className={`w-3 h-3 mx-1 rounded-full transition-all ${
-                  current === index ? 'bg-blue-600 w-6' : 'bg-gray-300'
+                className={`w-3 h-3 rounded-full transition-colors ${
+                  currentIndex === index ? 'bg-gold-500' : 'bg-gray-600 hover:bg-gray-500'
                 }`}
-                aria-label={`Go to slide ${index + 1}`}
+                aria-label={`Go to advantage ${index + 1}`}
               />
             ))}
           </div>
-          
-          {/* Navigation arrows */}
-          <button 
-            onClick={prev}
-            className="absolute top-1/2 -translate-y-1/2 -left-4 md:-left-12 bg-white rounded-full p-2 shadow-md hover:bg-gray-100 transition-colors"
-            aria-label="Previous slide"
-          >
-            <ChevronLeft className="w-6 h-6 text-gray-800" />
-          </button>
-          
-          <button 
-            onClick={next}
-            className="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-12 bg-white rounded-full p-2 shadow-md hover:bg-gray-100 transition-colors"
-            aria-label="Next slide"
-          >
-            <ChevronRight className="w-6 h-6 text-gray-800" />
-          </button>
         </div>
       </div>
     </section>
