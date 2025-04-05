@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { Menu, X } from 'lucide-react';
 
 const navLinks = [
   { name: 'Home', href: '/' },
@@ -110,9 +110,9 @@ const Header = () => {
             aria-label={isOpen ? "Close menu" : "Open menu"}
           >
             {isOpen ? (
-              <FaTimes className="h-6 w-6" />
+              <X className="h-6 w-6" />
             ) : (
-              <FaBars className="h-6 w-6" />
+              <Menu className="h-6 w-6" />
             )}
           </button>
         </div>
