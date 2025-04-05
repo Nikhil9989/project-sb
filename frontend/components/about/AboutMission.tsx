@@ -1,11 +1,13 @@
 'use client';
 
+import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useElementOnScreen } from '@/hooks/useElementOnScreen';
 import Image from 'next/image';
 
 const AboutMission = () => {
-  const [ref, isVisible] = useElementOnScreen({ threshold: 0.1 });
+  const ref = useRef<HTMLElement>(null);
+  const isVisible = useElementOnScreen(ref, { threshold: 0.1 });
 
   return (
     <section ref={ref} className="py-16">
