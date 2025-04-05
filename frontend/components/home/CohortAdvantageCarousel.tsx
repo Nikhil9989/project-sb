@@ -34,13 +34,18 @@ const CohortAdvantageCarousel = () => {
   ];
 
   useEffect(() => {
-    let interval;
+    // Fix the TypeScript error by properly typing the interval
+    let interval: NodeJS.Timeout | undefined;
+    
     if (autoplay) {
       interval = setInterval(() => {
         setCurrent((current) => (current === advantages.length - 1 ? 0 : current + 1));
       }, 5000);
     }
-    return () => clearInterval(interval);
+    
+    return () => {
+      if (interval) clearInterval(interval);
+    };
   }, [autoplay, advantages.length]);
 
   const next = () => {
