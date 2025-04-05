@@ -1,14 +1,48 @@
 # SKILL BRIDGE Frontend
 
-This directory contains the Next.js frontend application for the SKILL BRIDGE platform.
+This is the frontend for the SKILL BRIDGE platform, an innovative domain-based learning approach transforming theoretical knowledge into practical expertise.
 
-## Tech Stack
+## Technologies Used
 
 - Next.js
 - React
-- TailwindCSS
-- Animation libraries (Framer Motion, GSAP)
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Lucide React
 
-## Getting Started
+## Development
 
-Instructions for setting up the frontend development environment will be added soon.
+To run the project locally:
+
+```bash
+# Install dependencies
+npm install
+
+# Run the development server
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Building for Production
+
+This project is configured to build static exports for GitHub Pages:
+
+```bash
+npm run build
+```
+
+The build output will be generated in the `out` directory.
+
+## Deployment
+
+The website is automatically deployed to GitHub Pages via GitHub Actions whenever changes are pushed to the `master` branch.
+
+## Design Features
+
+- Transparent header for better visual appeal
+- Animated counters for cohort information
+- Carousel for showcasing the Cohort Advantage
+- Responsive design for all screen sizes
+- Consistent spacing and layout for better user experience
