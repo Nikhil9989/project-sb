@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SKILL BRIDGE | Transforming Education with Domain-Based Learning</title>
   <meta name="description" content="SKILL BRIDGE offers cohort-based, domain-focused learning pathways that bridge the skill gap between education and industry demands through personalized, incremental skill development.">
+  <link rel="stylesheet" href="./styles.css">
   <script>
     // Handle GitHub Pages SPA route params
     (function() {
@@ -18,13 +19,90 @@
       }
     })();
   </script>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background-color: #121212;
+      color: #ffffff;
+      height: 100%;
+      width: 100%;
+    }
+    
+    .loading-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    
+    .logo {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+    }
+    
+    .gold-text {
+      color: #FFC107;
+    }
+    
+    .spinner {
+      border: 4px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      border-top: 4px solid #FFC107;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 1rem;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .message {
+      margin-top: 1rem;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+    
+    .button {
+      margin-top: 2rem;
+      padding: 0.75rem 1.5rem;
+      background-color: #FFC107;
+      color: #121212;
+      font-weight: bold;
+      border: none;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.2s;
+    }
+    
+    .button:hover {
+      background-color: #e6af00;
+    }
+  </style>
 </head>
 <body>
-  <!-- Original content will be replaced by the Next.js app -->
-  <div id="__next"></div>
+  <div class="loading-container">
+    <div class="logo">SKILL<span class="gold-text">BRIDGE</span></div>
+    <div class="spinner"></div>
+    <div class="message">
+      Loading the SKILL BRIDGE experience. Please wait a moment while we prepare the domain-based learning platform for you.
+    </div>
+    <a href="https://github.com/Nikhil9989/project-sb" class="button">Visit Project Repository</a>
+  </div>
   
-  <!-- Include the Next.js scripts -->
-  <script src="/_next/static/chunks/webpack.js"></script>
-  <script src="/_next/static/chunks/main.js"></script>
+  <script>
+    // Redirect to the correct page
+    setTimeout(function() {
+      window.location.href = './frontend/index.html';
+    }, 3000);
+  </script>
 </body>
 </html>
