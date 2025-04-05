@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node -e \"const fs=require('fs'); !fs.existsSync('out') && fs.mkdirSync('out'); fs.writeFileSync('out/.nojekyll', '');\"",
+    "prebuild": "node build.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
