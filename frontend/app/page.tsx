@@ -8,6 +8,7 @@ import MissionVision from '@/components/home/MissionVision';
 import ContactUs from '@/components/home/ContactUs';
 import CallToAction from '@/components/home/CallToAction';
 import Testimonials from '@/components/home/Testimonials';
+import CohortAdvantageCarousel from '@/components/home/CohortAdvantageCarousel';
 
 export default function HomePage() {
   return (
@@ -15,6 +16,7 @@ export default function HomePage() {
       <Hero />
       <ProblemStatement />
       <DomainApproach />
+      <CohortAdvantageCarousel />
       <KeyFeatures />
       <MissionVision />
       <Testimonials />
