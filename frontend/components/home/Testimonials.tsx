@@ -41,7 +41,7 @@ const testimonials: Testimonial[] = [
     role: 'Frontend Developer',
     company: 'DigitalFirst',
     image: '/testimonials/person3.jpg',
-    quote: 'Coming from a tier-3 city with limited resources, Skill Bridge provided me access to industry-level training I couldn't find locally. The hybrid model with institutional partnerships made quality education accessible.',
+    quote: 'Coming from a tier-3 city with limited resources, Skill Bridge provided me access to industry-level training I could not find locally. The hybrid model with institutional partnerships made quality education accessible.',
     rating: 4,
   },
 ];
