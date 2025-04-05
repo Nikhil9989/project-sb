@@ -1,6 +1,6 @@
 # SKILL BRIDGE
 
-![Skill Bridge Logo](frontend/public/logo.png)
+![Skill Bridge Logo](frontend/public/logo.svg)
 
 An innovative domain-based learning platform bridging the skill gap in education through personalized, industry-aligned learning journeys.
 
@@ -50,6 +50,10 @@ SKILL BRIDGE addresses the critical disconnect between education and employment 
 - **Authentication**: OAuth 2.0 & JWT
 - **API Design**: RESTful APIs with GraphQL integration
 
+## Live Demo
+
+You can view the latest version of the project at [https://sb.itsmemnc.com/](https://sb.itsmemnc.com/)
+
 ## Setup Instructions
 
 ### Prerequisites
@@ -85,10 +89,11 @@ SKILL BRIDGE addresses the critical disconnect between education and employment 
 ### Recent Fixes
 
 #### April 2025
-- Fixed an issue with the `@types/framer-motion` dependency by removing it, as Framer Motion includes its own TypeScript types
+- Fixed an issue with missing image assets
 - Updated project structure to match Next.js 14 app directory conventions
-- Corrected paths in tsconfig.json and tailwind.config.js
-- Added CI/CD pipeline with GitHub Actions
+- Fixed styling and responsiveness issues
+- Added GitHub Actions workflow for automated deployment
+- Improved component architecture and fixed React hook dependency issues
 
 ### Environment Variables
 
@@ -113,7 +118,7 @@ The project is configured for automatic deployment using GitHub Actions. When co
 2. Build the Next.js application
 3. Deploy to GitHub Pages or your preferred hosting platform
 
-You can customize the deployment workflow in `.github/workflows/ci.yml`.
+You can customize the deployment workflow in `.github/workflows/deploy.yml`.
 
 ## Contributing
 
