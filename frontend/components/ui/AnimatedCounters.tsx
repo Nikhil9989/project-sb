@@ -124,9 +124,11 @@ export const CohortInfoBanner: React.FC = () => {
   );
 };
 
-// Create a default export for the module
-export default {
+// Create a named export for the components
+const AnimatedCounters = {
   AnimatedCounter,
   AnimatedDateDisplay,
   CohortInfoBanner
 };
+
+export default AnimatedCounters;
