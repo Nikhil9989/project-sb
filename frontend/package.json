@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && mkdir -p out && touch out/.nojekyll",
+    "prebuild": "node -e \"const fs=require('fs'); !fs.existsSync('out') && fs.mkdirSync('out'); fs.writeFileSync('out/.nojekyll', '');\"",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write 'app/**/*.{js,jsx,ts,tsx,css,md,json}' 'components/**/*.{js,jsx,ts,tsx,css,md,json}'"
