@@ -1,13 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  output: 'export', // Enables static HTML export
   images: {
-    domains: ['images.unsplash.com'],
-    unoptimized: true, // Required for static export
+    domains: ['api.placeholder.com'],
   },
-  // Handle trailing slashes to be compatible with GitHub Pages
-  trailingSlash: true,
-}
+  webpack: (config) => {
+    config.resolve.fallback = { fs: false, net: false, tls: false };
+    return config;
+  }
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

@@ -9,23 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/node": "^20.11.5",
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
+    "framer-motion": "^10.16.16",
     "next": "^14.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "framer-motion": "^11.0.5",
-    "gsap": "^3.12.4",
     "tailwindcss": "^3.4.1",
-    "postcss": "^8.4.35",
-    "autoprefixer": "^10.4.17",
-    "react-icons": "^5.0.1",
-    "lucide-react": "^0.302.0"
+    "typescript": "^5.3.3"
   },
   "devDependencies": {
-    "@types/node": "^20.11.19",
-    "@types/react": "^18.2.56",
-    "@types/react-dom": "^18.2.19",
+    "@types/framer-motion": "^10.16.7",
+    "autoprefixer": "^10.4.17",
     "eslint": "^8.56.0",
     "eslint-config-next": "^14.1.0",
-    "typescript": "^5.3.3"
+    "postcss": "^8.4.33"
   }
 }
