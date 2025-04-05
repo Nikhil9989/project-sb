@@ -19,21 +19,24 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
 
       - name: Install Dependencies 📦
         run: |
           cd frontend
-          npm install  # Using npm install instead of npm ci since there's no package-lock.json
+          npm ci || npm install  # Try npm ci first, fallback to npm install
 
       - name: Build 🏗️
         run: |
           cd frontend
           npm run build
-          # Next.js output is in the "out" directory after static export
           # Create a .nojekyll file to prevent GitHub Pages from using Jekyll
           touch out/.nojekyll
           # Ensure CNAME file is in the build output
-          echo "sb.itsmemnc.com" > out/CNAME
+          cp public/CNAME out/
+          # Ensure 404.html is present
+          cp public/404.html out/
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
@@ -41,3 +44,4 @@ jobs:
           folder: frontend/out # The folder the action should deploy
           branch: gh-pages # The branch the action should deploy to
           clean: true # Automatically remove deleted files from the deployment branch
+          commit-message: "Deploy website [skip ci]"
