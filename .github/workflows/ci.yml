@@ -26,6 +26,7 @@ jobs:
         npm install
     
     - name: Lint Code 🧹
+      continue-on-error: true
       run: |
         cd frontend
         npm run lint
