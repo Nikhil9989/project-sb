@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SKILL BRIDGE</title>
+  <script>
+    // Single Page Apps for GitHub Pages
+    // MIT License
+    // https://github.com/rafgraph/spa-github-pages
+    // This script handles redirects for GitHub Pages SPA hosting
+    // This is especially needed for Next.js apps with static export
+    
+    (function() {
+      // Get the path and search params
+      var pathSegmentsToKeep = 0;
+      var l = window.location;
+      var segmentCount = l.pathname.split('/').length;
+      
+      // Redirect to the correct path maintaining query parameters
+      var redirectUrl = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '');
+      
+      // Only add the redirect path if we're not at the root
+      if (segmentCount > 0) {
+        redirectUrl = redirectUrl + '/?p=' + l.pathname.slice(1);
+      }
+      
+      // Add any existing query parameters
+      if (l.search) {
+        redirectUrl = redirectUrl + (redirectUrl.indexOf('?') === -1 ? '?' : '&') + 
+                     l.search.slice(1);
+      }
+      
+      l.replace(redirectUrl);
+    }());
+  </script>
+</head>
+<body>
+  <h1 style="text-align: center; margin-top: 50px; font-family: sans-serif;">SKILL BRIDGE</h1>
+  <p style="text-align: center; font-family: sans-serif;">Redirecting to the main site...</p>
+  <p style="text-align: center; font-family: sans-serif;">
+    <a href="/">If you are not redirected automatically, click here.</a>
+  </p>
+</body>
+</html>
