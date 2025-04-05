@@ -8,8 +8,13 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  // Optimize for static exports if needed
-  output: 'standalone',
+  // Configure output directory
+  distDir: 'out',
+  // Skip touch .nojekyll
+  skipTrailingSlashRedirect: true,
+  skipMiddlewareUrlNormalize: true,
+  // Static export
+  output: 'export',
 }
 
 module.exports = nextConfig
