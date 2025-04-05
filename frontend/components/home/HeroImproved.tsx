@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
 import { AnimatedCounter, AnimatedDateDisplay } from '../ui/AnimatedCounters';
 
-const HeroImproved = () => {
+const HeroImproved: React.FC = () => {
   return (
     <section className="relative min-h-screen flex items-center pt-24 pb-16">
       {/* Background gradient */}
