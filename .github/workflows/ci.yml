@@ -28,7 +28,8 @@ jobs:
     - name: Lint Code 🧹
       run: |
         cd frontend
-        npm run lint
+        # Skip the ESLint configuration prompt
+        npm run lint -- --no-interactive
     
     - name: Build Project 🏗️
       run: |
