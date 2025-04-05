@@ -7,6 +7,7 @@ import KeyFeatures from '@/components/home/KeyFeatures';
 import MissionVision from '@/components/home/MissionVision';
 import ContactUs from '@/components/home/ContactUs';
 import CallToAction from '@/components/home/CallToAction';
+import Testimonials from '@/components/home/Testimonials';
 
 export default function HomePage() {
   return (
@@ -16,6 +17,7 @@ export default function HomePage() {
       <DomainApproach />
       <KeyFeatures />
       <MissionVision />
+      <Testimonials />
       <ContactUs />
       <CallToAction />
     </PageLayout>
