@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+// Define types for props
 interface AnimatedCounterProps {
   label: string;
   count: number;
@@ -11,8 +12,13 @@ interface AnimatedDateDisplayProps {
   date: string | Date;
 }
 
-export const AnimatedCounter: React.FC<AnimatedCounterProps> = ({ label, count, duration = 2000 }) => {
-  const [currentCount, setCurrentCount] = useState(0);
+// Component implementation with proper TypeScript typing
+export const AnimatedCounter: React.FC<AnimatedCounterProps> = ({ 
+  label, 
+  count, 
+  duration = 2000 
+}) => {
+  const [currentCount, setCurrentCount] = useState<number>(0);
   
   useEffect(() => {
     let start = 0;
@@ -43,8 +49,11 @@ export const AnimatedCounter: React.FC<AnimatedCounterProps> = ({ label, count, 
   );
 };
 
-export const AnimatedDateDisplay: React.FC<AnimatedDateDisplayProps> = ({ label, date }) => {
-  const [isVisible, setIsVisible] = useState(false);
+export const AnimatedDateDisplay: React.FC<AnimatedDateDisplayProps> = ({ 
+  label, 
+  date 
+}) => {
+  const [isVisible, setIsVisible] = useState<boolean>(false);
   
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -67,7 +76,7 @@ export const AnimatedDateDisplay: React.FC<AnimatedDateDisplayProps> = ({ label,
         day: 'numeric', 
         year: 'numeric'
       })
-    : date;
+    : String(date);
   
   return (
     <div className="flex flex-col items-center bg-white rounded-lg shadow-md p-4 w-40">
@@ -115,6 +124,7 @@ export const CohortInfoBanner: React.FC = () => {
   );
 };
 
+// Create a default export for the module
 export default {
   AnimatedCounter,
   AnimatedDateDisplay,
