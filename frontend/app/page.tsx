@@ -7,6 +7,7 @@ import KeyFeatures from '@/components/home/KeyFeatures';
 import MissionVision from '@/components/home/MissionVision';
 import ContactSectionImproved from '@/components/home/ContactSectionImproved';
 import CallToAction from '@/components/home/CallToAction';
+import CTASection from '@/components/home/CTASection';
 import Testimonials from '@/components/home/Testimonials';
 import CohortAdvantageCarousel from '@/components/home/CohortAdvantageCarousel';
 
@@ -20,6 +21,7 @@ export default function HomePage() {
       <KeyFeatures />
       <MissionVision />
       <Testimonials />
+      <CTASection />
       <ContactSectionImproved />
       <CallToAction />
     </PageLayout>
