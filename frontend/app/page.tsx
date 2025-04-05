@@ -1,20 +1,22 @@
 import React from 'react';
+import PageLayout from '@/components/layout/PageLayout';
+import Hero from '@/components/home/Hero';
+import ProblemStatement from '@/components/home/ProblemStatement';
+import DomainApproach from '@/components/home/DomainApproach';
+import KeyFeatures from '@/components/home/KeyFeatures';
+import MissionVision from '@/components/home/MissionVision';
+import ContactUs from '@/components/home/ContactUs';
+import CallToAction from '@/components/home/CallToAction';
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-6">
-      <div className="max-w-3xl mx-auto text-center">
-        <h1 className="heading-1 mb-6">
-          <span className="bg-gradient-to-r from-skill-bridge-primary to-skill-bridge-secondary bg-clip-text text-transparent">SKILL BRIDGE</span>
-        </h1>
-        <p className="body-large mb-8">
-          Transforming education with domain-based learning pathways that bridge the skill gap between education and industry demands.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button className="btn-primary">Get Started</button>
-          <button className="btn-secondary">Learn More</button>
-        </div>
-      </div>
-    </main>
-  )
-}
+    <PageLayout>
+      <Hero />
+      <ProblemStatement />
+      <DomainApproach />
+      <KeyFeatures />
+      <MissionVision />
+      <ContactUs />
+      <CallToAction />
+    </PageLayout>
+  );
