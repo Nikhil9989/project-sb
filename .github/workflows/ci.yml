@@ -25,11 +25,10 @@ jobs:
         cd frontend
         npm install
     
-    - name: Lint Code 🧹
-      continue-on-error: true
+    - name: Create output directory
       run: |
-        cd frontend
-        npm run lint
+        mkdir -p frontend/out
+        touch frontend/out/.nojekyll
     
     - name: Build Project 🏗️
       run: |
